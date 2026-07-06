@@ -50,56 +50,44 @@ function EmployeeForm({ employee, onSaved, onCancel }) {
     };
 
     return (
-    <div style={{ border: '1px solid #ccc', padding: '16px', marginBottom: '20px' }}>
-      <h3>{isEditMode ? 'Edit Employee' : 'New Employee'}</h3>
+    <div style={{
+      background: '#f8fafc',
+      border: '1px solid #e2e8f0',
+      borderRadius: '10px',
+      padding: '20px',
+      marginBottom: '20px',
+    }}>
+      <h3 style={{ marginTop: 0 }}>{isEditMode ? 'Edit Employee' : 'New Employee'}</h3>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '8px' }}>
-          <label>Staff No: </label>
-          <input
-            type="text"
-            name="staffNo"
-            value={formData.staffNo}
-            onChange={handleChange}
-            required
-          />
+        <div style={rowStyle}>
+          <label style={labelStyle}>Staff No</label>
+          <input style={inputStyle} type="text" name="staffNo" value={formData.staffNo} onChange={handleChange} required />
         </div>
-        <div style={{ marginBottom: '8px' }}>
-          <label>Full Name: </label>
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            required
-          />
+        <div style={rowStyle}>
+          <label style={labelStyle}>Full Name</label>
+          <input style={inputStyle} type="text" name="fullName" value={formData.fullName} onChange={handleChange} required />
         </div>
-        <div style={{ marginBottom: '8px' }}>
-          <label>Department: </label>
-          <input
-            type="text"
-            name="department"
-            value={formData.department}
-            onChange={handleChange}
-            required
-          />
+        <div style={rowStyle}>
+          <label style={labelStyle}>Department</label>
+          <input style={inputStyle} type="text" name="department" value={formData.department} onChange={handleChange} required />
         </div>
-        <div style={{ marginBottom: '8px' }}>
-          <label>Join Date: </label>
-          <input
-            type="date"
-            name="joinDate"
-            value={formData.joinDate}
-            onChange={handleChange}
-            required
-          />
+        <div style={rowStyle}>
+          <label style={labelStyle}>Join Date</label>
+          <input style={inputStyle} type="date" name="joinDate" value={formData.joinDate} onChange={handleChange} required />
         </div>
-        <button type="submit">{isEditMode ? 'Update' : 'Create'}</button>
-        <button type="button" onClick={onCancel} style={{ marginLeft: '8px' }}>
-          Cancel
-        </button>
+        <div style={{ marginTop: '16px' }}>
+          <button type="submit" style={submitBtnStyle}>{isEditMode ? 'Update' : 'Create'}</button>
+          <button type="button" onClick={onCancel} style={cancelBtnStyle}>Cancel</button>
+        </div>
       </form>
     </div>
   );
 }
+
+const rowStyle = { marginBottom: '14px', display: 'flex', flexDirection: 'column', gap: '4px' };
+const labelStyle = { fontSize: '0.85rem', fontWeight: 600, color: '#475569' };
+const inputStyle = { padding: '9px 12px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '0.95rem' };
+const submitBtnStyle = { background: '#2563eb', color: 'white', border: 'none', borderRadius: '8px', padding: '10px 18px', fontWeight: 600, marginRight: '10px' };
+const cancelBtnStyle = { background: '#f1f5f9', color: '#334155', border: '1px solid #cbd5e1', borderRadius: '8px', padding: '10px 18px', fontWeight: 600 };
 
 export default EmployeeForm;
