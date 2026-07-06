@@ -9,6 +9,8 @@ services:
       - SA_PASSWORD=Password123
     ports:
       - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql 
     networks:
       - hrnet
     healthcheck:
@@ -23,6 +25,8 @@ services:
     container_name: employee-service
     ports:
       - "8081:80"
+    volumes:
+      - sql_data:/var/opt/mssql  
     depends_on:
       sqlserver:
         condition: service_healthy
@@ -46,6 +50,20 @@ services:
     networks:
       - hrnet
 
+  hr-frontend:
+    build: ./hr-frontend
+    container_name: hr-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - employee-service
+      - leave-service
+    networks:
+      - hrnet
+
 networks:
   hrnet:
     driver: bridge
+
+volumes:
+  sql_data: 
