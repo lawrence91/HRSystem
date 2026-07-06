@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="employee-service/employee-service.csproj" />
+  <Project Path="leave-service/leave-service.csproj" />
+</Solution>
